@@ -11,17 +11,29 @@ class dbSqlite():
         self.dBase = sqlite3.connect(dBase+'.db')
         self.dBase.commit()
         self.dBase.close()
+        return('DB built')
 
 
     def buildTable(self, dBase, table, parms, types):
+        formatedParms = parmTypeFormat(parms, types)
         conn = sqlite3.connect(dBase +'.db')
         c = conn.cursor()
 
+
         # Create table
-        c.execute('CREATE TABLE '+table+' ('+parms[0]+' '+types[0]+','+ \
-        parms[1]+' '+types[1]+','+parms[2]+' '+types[2]+')')
+        c.execute('CREATE TABLE '+table+' ('+formatedParms+')')
         conn.commit()
         conn.close()
+
+    def parmTypeFormat(self, parms, types):
+        if not len(parms) == len(types):
+            print('parms and types are missmatched. ')
+
+        else:
+            prevStructure = []
+            for i in range(len(parms)):
+                prevStructure.append(parms[i]+' '+types[i])
+            return(', '.join(prevStructure))
 
     def fillTable(self, dBase, table, values):
         # Insert a row of data
