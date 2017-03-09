@@ -27,6 +27,7 @@ class dbSqlite():
 
     def parmTypeFormat(self, parms, types):
         if not len(parms) == len(types):
+            #Error detection shuold be improvved to avoid missmatch lenght
             print('parms and types are missmatched. ')
 
         else:
