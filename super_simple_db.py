@@ -24,6 +24,7 @@ class sqliteBase():
         self.table = settings[1]
         self.parms = settings[2]
         self.types = settings[3]
+        self.values = []
         pass
     #DB to hold
     def getTable(self):
@@ -44,7 +45,7 @@ class sqliteBase():
             prevStructure = []
             for i in range(len(parms)):
                 prevStructure.append(parms[i] +' '+ types[i])
-                return(', '.join(prevStructure))
+            return(', '.join(prevStructure))
 
     def buildTable(self):
         formatedParms = self.parmTypeFormat(self.parms, self.types)
@@ -59,11 +60,13 @@ class sqliteBase():
 
 
     def fillTable(self, values):
+        for i in range(len(self.parms)):
+            self.values.append(input('Enter vl '+str(i)+' for '+str(self.table)))
         conn = sqlite3.connect(self.base +'.db')
         c = conn.cursor()
         #Number of values needs to match parms/valeus amount.
         #SEcurity need to be improoved.
-        c.execute('INSERT INTO'+self.table+"VALUES ('"+", '".join(values)+"')")
+        c.execute('INSERT INTO '+self.table+" VALUES ('"+", '".join(values)+"')")
         # Save (commit) the changes
         conn.commit()
         conn.close()
