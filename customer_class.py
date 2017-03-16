@@ -1,3 +1,5 @@
+from super_simple_db import SqliteBase
+
 class Customer():
     '''
     this class maps customers on company database. Relevant information as
@@ -5,16 +7,15 @@ class Customer():
     '''
 
     def __init__(self, parms):
+        self.values = ['super_simple_db', 'customer', parms]
         self.name = parms[0]
-        self.tel = parms[1]
-        self.cutomerId = parms[2]
+        self.lastName = parms[1]
+        self.phone = parms[2]
         self.address = parms[3]
         #self.clubPts = parms[4]
 
     def setCustDb(self):#This methos asents information for first time
-        dbCustomer = open('dbCustomer.myd', 'w+')
-        dbCustomer.write(self.name +'-'+self.id+'-'+self.address)
-        dbCustomer.close()
+        dbInter = SqliteBase(self.values)
 
     def updateCutInfo(self, tel = None, address = None, clubPts = None):
         #updatin customer contact info is a relevant method fo functionality
