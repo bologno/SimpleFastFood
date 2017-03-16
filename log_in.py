@@ -1,3 +1,6 @@
+'''
+comment
+'''
 import tkinter
 
 class LogInClass():
