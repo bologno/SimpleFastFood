@@ -1,17 +1,17 @@
-class Customer(Object):
+class Customer():
     '''
     this class maps customers on company database. Relevant information as
     delivery address, and telephone are the main ones
     '''
 
-    def __init__(self, name, tel, cutomerId, address, clubPts):
-        self.name = name
-        self.tel = tel
-        self.cutomerId = cutomerId
-        self.address = address
-        self.clubPts = clubPts
+    def __init__(self, parms):
+        self.name = parms[0]
+        self.tel = parms[1]
+        self.cutomerId = parms[2]
+        self.address = parms[3]
+        #self.clubPts = parms[4]
 
-    def setCustomer(self):#This methos asents information for first time
+    def setCustDb(self):#This methos asents information for first time
         dbCustomer = open('dbCustomer.myd', 'w+')
         dbCustomer.write(self.name +'-'+self.id+'-'+self.address)
         dbCustomer.close()

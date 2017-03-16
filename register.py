@@ -1,4 +1,6 @@
 import tkinter
+from customer_class import *
+
 
 class RegisterClass():
     '''
@@ -11,6 +13,25 @@ class RegisterClass():
     #    self.lastName = ''
     #    self.phone = ''
     #    self.address = ''
+
+    def getProfile(self, entryList):
+        #this method saves Wnrey values from customer to a local variable,
+        #After, is called a method for saving new customer information on DB
+        custParms = []
+
+        for i in entryList:
+            custParms.append(i.get())
+        #Here
+        custLogic = Customer(custParms)
+
+
+        profTab = tkinter.Tk()
+        profTab.title('Customer Info shuld be saved on DB')
+        nameLabel = tkinter.Label(profTab, text = 'Name '+str(custLogic.name))
+        nameLabel.pack()
+        profTab.mainloop
+#        custLogic.setCusDb
+
     def askInfo(self):
         registerTab = tkinter.Tk()
         registerTab.title('Please provide your information')
@@ -22,16 +43,22 @@ class RegisterClass():
         phoneLabel = tkinter.Label(registerTab, text = 'Phone')
         addressEntry  = tkinter.Entry(registerTab)
         addressLabel = tkinter.Label(registerTab, text = 'Address ')
+        entryList = [nameEntry, lastNameEntry, phoneEntry, addressEntry]
+        #labda function here allows to blend as parameter the function called
+        # on the button with his own arguemnt. Otherwise doesnt wokr on tkinter.
+        registerBtn = tkinter.Button(registerTab, text = 'Save ', \
+        command = lambda: self.getProfile(entryList))
         #self.name  = tkinter.Entry(registerTab, text = 'Name')#add 'command
 
-        nameLabel.pack( side = tkinter.LEFT)
-        nameEntry.pack( side = tkinter.RIGHT)
-        lastNameLabel.pack()
+        nameEntry.pack()
+        nameLabel.pack()
         lastNameEntry.pack()
-        phoneLabel.pack()
+        lastNameLabel.pack()
         phoneEntry.pack()
-        addressLabel.pack()
+        phoneLabel.pack()
         addressEntry.pack()
+        addressLabel.pack()
+        registerBtn.pack()
 
         # Code to add widgets will go here...
         registerTab.mainloop()

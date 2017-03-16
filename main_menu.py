@@ -2,6 +2,7 @@
 
 import tkinter
 from register import RegisterClass
+registerC = RegisterClass()
 #import LogInMenu
 #import Menu
 #import Promotion
@@ -20,7 +21,8 @@ class MainMenuClass():
     def setForm(self):
         top = tkinter.Tk()
         top.title('Welcome to Los Pollos Hnos')
-        registerBtn = tkinter.Button(top, text = 'Register')#add 'command =' parameter
+        registerBtn = tkinter.Button(top, text = 'Register', \
+        command = registerC.askInfo)
         logInBtn = tkinter.Button(top, text = 'Login')#add 'command =' parameter
         menuBtn = tkinter.Button(top, text = 'Menu')#add 'command =' parameter
         promotion = tkinter.Button(top, text = 'Promotions')#add 'command =' parameter

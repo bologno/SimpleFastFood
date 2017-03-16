@@ -1,13 +1,15 @@
+#!/usr/bin/python
 import tkinter as tk
-from menu_customer import CustomerMenu
+#from menu_customer import CustomerMenu
 
+'''
+This class models the kiotchen display for ongoing orders
+Details products to be made with standard time running
+sort orders in FIFO + order type(small order may come up earlier).
+One canvass represents one order.
+'''
 class Kitchen():
-    '''
-    This class models the kiotchen display for ongoing orders
-    Details products to be made with standard time running
-    sort orders in FIFO + order type(small order may come up earlier).
-    One canvass represents one order.
-    '''
+
     def __init__(self):
         #self.localDollar = 15.8
         #    self.lastName = ''
