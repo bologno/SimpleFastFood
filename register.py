@@ -23,6 +23,7 @@ class RegisterClass():
             custParms.append(i.get())
         # Here
         custLogic = Customer(custParms)
+        custLogic.setCustDb()
 
         profTab = tkinter.Tk()
         profTab.title('Customer Info shuld be saved on DB')

@@ -16,6 +16,7 @@ class Customer():
 
     def setCustDb(self):#This methos asents information for first time
         dbInter = SqliteBase(self.values)
+        dbInter.fillTable()
 
     def updateCutInfo(self, tel = None, address = None, clubPts = None):
         #updatin customer contact info is a relevant method fo functionality

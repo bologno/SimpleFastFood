@@ -16,15 +16,18 @@ def dbDef():
     return(definition)
 #settings = dbDef()
 
-class sqliteBase():
+class SqliteBase():
 
+    # This method init should online take Databes and table nmaes.
+    # Parms and types should be provided only on buidlTable method.
+    # Values should be provided when fillTable method is called.
     def __init__(self, settings):
         #self.conn = sqlite.connect()
         self.base = settings[0]
         self.table = settings[1]
-        self.parms = settings[2]
-        self.types = settings[3]
-        self.values = []
+        #self.parms = settings[2]
+        #self.types = settings[3]
+        self.values = settings[2]
         pass
     #DB to hold
     def getTable(self):
@@ -59,14 +62,16 @@ class sqliteBase():
         conn.close()
 
 
-    def fillTable(self, values):
-        for i in range(len(self.parms)):
-            self.values.append(input('Enter vl '+str(i)+' for '+str(self.table)))
+    def fillTable(self):
+        #for i in range(len(self.parms)):
+        #    self.values.append(input('Enter vl '+str(i)+' for '+str(self.table)))
         conn = sqlite3.connect(self.base +'.db')
         c = conn.cursor()
         #Number of values needs to match parms/valeus amount.
         #SEcurity need to be improoved.
-        c.execute('INSERT INTO '+self.table+" VALUES ('"+", '".join(values)+"')")
+        values = ", ".join(self.values)
+        sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?)"
+        c.execute(sql, values)
         # Save (commit) the changes
         conn.commit()
         conn.close()
