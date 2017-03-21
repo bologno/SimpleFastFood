@@ -25,8 +25,8 @@ class SqliteBase():
         #self.conn = sqlite.connect()
         self.base = settings[0]
         self.table = settings[1]
-        #self.parms = settings[2]
-        #self.types = settings[3]
+        self.parms = ['Name', 'LastName', 'Phone', 'Address']
+        self.types = ['TEXT', 'TEXT', 'INTEGER', 'TEXT']
         self.values = settings[2]
         pass
     #DB to hold
@@ -69,9 +69,10 @@ class SqliteBase():
         c = conn.cursor()
         #Number of values needs to match parms/valeus amount.
         #SEcurity need to be improoved.
-        values = ", ".join(self.values)
+        #values = ", ".join(self.values)
+        val = self.values
         sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?)"
-        c.execute(sql, values)
+        c.execute(sql, (val[0], val[1], val[2], val[3]))
         # Save (commit) the changes
         conn.commit()
         conn.close()

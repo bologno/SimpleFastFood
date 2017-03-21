@@ -17,11 +17,12 @@ class RegisterClass():
     def getProfile(self, entryList):
         # this method saves Wnrey values from customer to a local variable,
         # After, is called a method for saving new customer information on DB
+        #custParms = [str(entryList[0]), str(entryList[1]), int(entryList[2]), str(entryList[3])]
         custParms = []
 
         for i in entryList:
             custParms.append(i.get())
-        # Here
+
         custLogic = Customer(custParms)
         custLogic.setCustDb()
 
