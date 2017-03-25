@@ -44,7 +44,14 @@ class RegisterClass():
         phoneLabel = tkinter.Label(registerTab, text='Phone')
         addressEntry = tkinter.Entry(registerTab)
         addressLabel = tkinter.Label(registerTab, text='Address ')
-        entryList = [nameEntry, lastNameEntry, phoneEntry, addressEntry]
+        userEntry = tkinter.Entry(registerTab)
+        userLabel = tkinter.Label(registerTab, text='User Name ')
+        passwordEntry = tkinter.Entry(registerTab)
+        passwordLabel = tkinter.Label(registerTab, text='Password ')
+        p2Entry = tkinter.Entry(registerTab)
+        p2Label = tkinter.Label(registerTab, text='Repeat Password ')
+        entryList = [nameEntry, lastNameEntry, phoneEntry, addressEntry,
+                    userEntry, passwordEntry, p2Entry]
         # lambda function here allows to blend as parameter
         # the function called on the button with his own
         # arguemnt. Otherwise doesnt wokr on tkinter.
@@ -60,6 +67,12 @@ class RegisterClass():
         phoneLabel.pack()
         addressEntry.pack()
         addressLabel.pack()
+        userEntry.pack()
+        userLabel.pack()
+        passwordEntry.pack()
+        passwordLabel.pack()
+        p2Entry.pack()
+        p2Label.pack()
         registerBtn.pack()
 
         # Code to add widgets will go here...

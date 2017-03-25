@@ -6,6 +6,7 @@ from promotions import Promotion
 from log_in import LogInClass
 from menu_customer import CustomerMenu
 from support import Support
+from suppliers_class import Supplier
 
 
 
@@ -14,6 +15,7 @@ newProm = Promotion()
 newLog = LogInClass()
 orderMenu = CustomerMenu()
 support = Support()
+
 
 #import LogInMenu
 #import Menu

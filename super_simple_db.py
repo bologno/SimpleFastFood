@@ -21,12 +21,16 @@ class SqliteBase():
     # This method init should online take Databes and table nmaes.
     # Parms and types should be provided only on buidlTable method.
     # Values should be provided when fillTable method is called.
-    def __init__(self, settings):
+    def __init__(self, settings, parms = None, types = None):
         #self.conn = sqlite.connect()
         self.base = settings[0]
         self.table = settings[1]
-        self.parms = ['Name', 'LastName', 'Phone', 'Address']
-        self.types = ['TEXT', 'TEXT', 'INTEGER', 'TEXT']
+        if parms:
+            self.parms = parms
+            self.types = types
+        else:
+            self.parms = ['Name', 'LastName', 'Phone', 'Address', 'USER', 'PASSWORD']
+            self.types = ['TEXT', 'TEXT', 'INTEGER', 'TEXT', 'TEXT', 'TEXT']
         self.values = settings[2]
         pass
     #DB to hold
@@ -71,8 +75,9 @@ class SqliteBase():
         #SEcurity need to be improoved.
         #values = ", ".join(self.values)
         val = self.values
-        sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?)"
-        c.execute(sql, (val[0], val[1], val[2], val[3]))
+#        numParm = len(val) *
+        sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?, ?, ?)"
+        c.execute(sql, (val[0], val[1], val[2], val[3], val[4], val[5]))
         # Save (commit) the changes
         conn.commit()
         conn.close()

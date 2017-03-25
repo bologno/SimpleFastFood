@@ -12,6 +12,8 @@ class Customer():
         self.lastName = parms[1]
         self.phone = parms[2]
         self.address = parms[3]
+        self.user = parms[4]
+        self.password = parms[5]
         #self.clubPts = parms[4]
 
     def setCustDb(self):#This methos asents information for first time
