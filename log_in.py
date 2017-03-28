@@ -14,12 +14,12 @@ class LogInClass():
     #    self.lastName = ''
     #    self.phone = ''
     #    self.address = ''
-    def checkUser(self):
-        checkTab = tkinter.Tk()
+    def checkUser(self, mainForm):
+        checkTab = tkinter.Toplevel(mainForm)
         #checkTab.geometry("250x250+120+120")
         checkTab.title('Enter credentials')
-        userCheck = tkinter.Entry(checkTab)
 
+        userCheck = tkinter.Entry(checkTab)
         userCheckLabel = tkinter.Label(checkTab, text='User Name')
         passwordCheck = tkinter.Entry(checkTab,)
         passwordCheckLabel = tkinter.Label(checkTab, text='Password')
@@ -28,6 +28,7 @@ class LogInClass():
         forgotButton = tkinter.Button(checkTab)#add 'command
         forgotButtonLabel = tkinter.Label(checkTab, text='Forgot access')
 
+        userCheck.pack()
         userCheckLabel.pack()
         passwordCheck.pack()
         passwordCheckLabel.pack()

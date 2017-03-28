@@ -23,7 +23,7 @@ class RegisterClass():
         for i in entryList:
             custParms.append(i.get())
 
-        custLogic = Customer(custParms)
+        custLogic = Customer(**custParms)
         custLogic.setCustDb()
 
         profTab = tkinter.Tk()
@@ -33,28 +33,26 @@ class RegisterClass():
         profTab.mainloop
 #        custLogic.setCusDb
 
-    def askInfo(self):
-        registerTab = tkinter.Tk()
+    def askInfo(self, mainForm):
+        registerTab = tkinter.Toplevel(mainForm)
+        registerTab.after(1, lambda: registerTab.focus_force())
         registerTab.title('Please provide your information')
-        nameEntry = tkinter.Entry(registerTab) # add 'command
+        nameEntry = tkinter.Entry(registerTab)  # add 'command
         nameLabel = tkinter.Label(registerTab, text='Name')
-        lastNameEntry = tkinter.Entry(registerTab,) #add '
+        lastNameEntry = tkinter.Entry(registerTab,)  # add '
         lastNameLabel = tkinter.Label(registerTab, text='Last name')
-        phoneEntry = tkinter.Entry(registerTab)#add 'comman
+        phoneEntry = tkinter.Entry(registerTab)  # add 'comman
         phoneLabel = tkinter.Label(registerTab, text='Phone')
         addressEntry = tkinter.Entry(registerTab)
         addressLabel = tkinter.Label(registerTab, text='Address ')
         userEntry = tkinter.Entry(registerTab)
-        userLabel = tkinter.Label(registerTab, text='User Name ')
+        userLabel = tkinter.Label(registerTab, text='P ')
         passwordEntry = tkinter.Entry(registerTab)
-        passwordLabel = tkinter.Label(registerTab, text='Password ')
-        p2Entry = tkinter.Entry(registerTab)
-        p2Label = tkinter.Label(registerTab, text='Repeat Password ')
-        entryList = [nameEntry, lastNameEntry, phoneEntry, addressEntry,
-                    userEntry, passwordEntry, p2Entry]
+        passwordLabel = tkinter.Label(registerTab, text='Address ')
+        entryList = [nameEntry, lastNameEntry, phoneEntry, addressEntry]
         # lambda function here allows to blend as parameter
         # the function called on the button with his own
-        # arguemnt. Otherwise doesnt wokr on tkinter.
+        # arguemnt. Otherwise doesnt work on tkinter.
         registerBtn = tkinter.Button(registerTab, text='Save ',
                                      command=lambda: self.getProfile(entryList))
         #self.name  = tkinter.Entry(registerTab, text = 'Name')#add 'command
@@ -67,16 +65,12 @@ class RegisterClass():
         phoneLabel.pack()
         addressEntry.pack()
         addressLabel.pack()
-        userEntry.pack()
-        userLabel.pack()
-        passwordEntry.pack()
-        passwordLabel.pack()
-        p2Entry.pack()
-        p2Label.pack()
         registerBtn.pack()
 
+        return registerTab
+
         # Code to add widgets will go here...
-        registerTab.mainloop()
+        # registerTab.mainloop()
 
 '''
 if __name__ == '__main__':

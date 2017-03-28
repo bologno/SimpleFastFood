@@ -11,10 +11,10 @@ class CustomerMenu():
         #    self.phone = ''
         #    self.address = ''
 
-    def checkUser(self):#two entry fields with labels. And some buttons are displayed
-        checkTab = tk.Tk()
+    def showMenu(self, mainForm):#two entry fields with labels. And some buttons are displayed
+        checkTab = tk.Toplevel(mainForm)
         checkTab.geometry("250x250+120+120")
-        checkTab.title('Select new password')
+        checkTab.title('Shape your order')
         prdct1  = tk.Entry(checkTab).grid(row = 0, column = 1)
         prdct1Descrip = tk.Label(checkTab, text = 'Hamburguesa').grid(row=0\
         , column = 0)

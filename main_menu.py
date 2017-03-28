@@ -2,20 +2,18 @@
 
 import tkinter
 from register import RegisterClass
-from promotions import Promotion
 from log_in import LogInClass
 from menu_customer import CustomerMenu
+from promotions import Promotion
 from support import Support
-from suppliers_class import Supplier
 
 
 
-registerC = RegisterClass()
-newProm = Promotion()
+# registerC =
 newLog = LogInClass()
 orderMenu = CustomerMenu()
+newProm = Promotion()
 support = Support()
-
 
 #import LogInMenu
 #import Menu
@@ -40,11 +38,15 @@ class MainMenuClass():
         top = tkinter.Tk()
         top.title('Welcome to Los Pollos Hnos')
         registerBtn = tkinter.Button(top, text='Register',
-                                    command=registerC.askInfo)
-        logInBtn = tkinter.Button(top, text='Login', command=newLog.checkUser)#add 'command =' parameter
-        menuBtn = tkinter.Button(top, text='Menu', command=orderMenu.checkUser)#add 'command =' parameter
-        promotion = tkinter.Button(top, text='Promotions', command=newProm.showPromo)#add 'command =' parameter
-        repChat = tkinter.Button(top, text='Support/Feedback', command=support.showHelp)#add 'command =' parameter
+                                     command=lambda: self.callRegister(top))
+        logInBtn = tkinter.Button(top, text='Login',
+                                  command=lambda: self.callLogin(top))
+        menuBtn = tkinter.Button(top, text='Menu',
+                                 command=lambda: self.callMenu(top))
+        promotion = tkinter.Button(top, text='Promotions',
+                                   command=lambda: self.callPromo(top))
+        repChat = tkinter.Button(top, text='Support/Feedback',
+                                 command=lambda: self.callSup(top))
 
         registerBtn.pack()
         logInBtn.pack()
@@ -54,6 +56,29 @@ class MainMenuClass():
         # Code to add widgets will go here...
         top.mainloop()
 
+    def callRegister(self, mainForm):
+        # mainForm.iconify()
+        regForm = RegisterClass().askInfo(mainForm)
+        regForm.grab_set()
+
+    def callLogin(self, mainForm):
+        mainForm.iconify()
+        regForm = newLog.checkUser(mainForm)
+
+    def callMenu(self, mainForm):
+        mainForm.iconify()
+        regForm = orderMenu.showMenu(mainForm)
+
+    def callPromo(self, mainForm):
+        mainForm.iconify()
+        regForm = newProm.showPromo(mainForm)
+
+    def callSup(self, mainForm):
+        mainForm.iconify()
+        regForm = support.showHelp(mainForm)
+        mainForm.deiconify()
+
+
 if __name__ == '__main__':
-    helloScreen = MainMenu()
+    helloScreen = MainMenuClass()
     helloScreen.setForm()
