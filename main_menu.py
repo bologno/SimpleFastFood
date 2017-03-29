@@ -9,12 +9,6 @@ from support import Support
 
 
 
-# registerC =
-newLog = LogInClass()
-orderMenu = CustomerMenu()
-newProm = Promotion()
-support = Support()
-
 #import LogInMenu
 #import Menu
 #import Promotion
@@ -62,21 +56,22 @@ class MainMenuClass():
         regForm.grab_set()
 
     def callLogin(self, mainForm):
-        mainForm.iconify()
-        regForm = newLog.checkUser(mainForm)
+        loginForm = LogInClass().checkUser(mainForm)
+        loginForm.grab_set()
 
     def callMenu(self, mainForm):
-        mainForm.iconify()
-        regForm = orderMenu.showMenu(mainForm)
+        menuForm = CustomerMenu().showMenu(mainForm)
+        menuForm.grab_set()
 
     def callPromo(self, mainForm):
-        mainForm.iconify()
-        regForm = newProm.showPromo(mainForm)
+        promoForm = Promotion().showPromo(mainForm)
+        promoForm.grab_set()
+
 
     def callSup(self, mainForm):
-        mainForm.iconify()
-        regForm = support.showHelp(mainForm)
-        mainForm.deiconify()
+        suppForm = Support().showHelp(mainForm)
+        suppForm.grab_set()
+
 
 
 if __name__ == '__main__':
