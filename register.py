@@ -67,7 +67,7 @@ class RegisterClass():
         addressLabel.pack()
         registerBtn.pack()
 
-        return registerTab
+        return (registerTab)
 
         # Code to add widgets will go here...
         # registerTab.mainloop()

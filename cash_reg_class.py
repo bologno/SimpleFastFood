@@ -1,4 +1,4 @@
-class REgister(Object):
+class CashRegister():
     '''
     This class maps regiter movements ons sales, as price (input) and separated
     (output). Upadtes info on records for daily and hitoric movements.

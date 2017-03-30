@@ -1,5 +1,7 @@
 import tkinter
-class User():
+
+
+class UserMenu():
 
     '''
     This class models the mainMenu of the store app user.
@@ -11,23 +13,24 @@ class User():
     def __init__(self):
         pass
 
-    def mainForm(self):
-        top = tkinter.Tk()
-        top.title('User Main Menu')
-        registerBtn = tkinter.Button(top, text='Register',
-                                    command=self.cashResgister)
-        customerBtn = tkinter.Button(top, text='Customers',
-                                    command=self.customerList)#add 'command =' parameter
-        supplierBtn = tkinter.Button(top, text='Supplier',
-                                    command=self.supplierList)#add 'command =' parameter
-        stockBtn = tkinter.Button(top, text='Stock', command=self.checkStock)#add 'command =' parameter
+    def mainForm(self, topForm):
+        mainMenuTab = tkinter.Toplevel(topForm)
+        mainMenuTab.after(2, lambda: mainMenuTab.focus_force())
+        mainMenuTab.title('User Main Menu')
+        registerBtn = tkinter.Button(mainMenuTab, text='Cash Reg',
+                                    command=lambda: self.cashResgister)
+        customerBtn = tkinter.Button(mainMenuTab, text='Customers',
+                                    command=lambda: self.customerList)#add 'command =' parameter
+        supplierBtn = tkinter.Button(mainMenuTab, text='Supplier',
+                                    command=lambda: elf.supplierList)#add 'command =' parameter
+        stockBtn = tkinter.Button(mainMenuTab, text='Stock', command=lambda: self.checkStock)#add 'command =' parameter
         registerBtn.pack()
         customerBtn.pack()
         supplierBtn.pack()
         stockBtn.pack()
-        top.mainloop()
+        return (mainMenuTab)
 
-    def cashResgister(self,):
+'''    def cashResgister(self,):
         top = tkinter.Tk()
         top.title('Cash Register')
 
@@ -42,3 +45,9 @@ class User():
     def checkStock(self,):
         top = tkinter.Tk()
         top.title('Kitchen Stock')
+'''
+
+
+if __name__ == '__main__':
+    helloScreen = User()
+    helloScreen.mainForm()
