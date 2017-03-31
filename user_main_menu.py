@@ -1,5 +1,5 @@
 import tkinter
-
+from supplier_main_form import SupplierForm
 
 class UserMenu():
 
@@ -22,13 +22,17 @@ class UserMenu():
         customerBtn = tkinter.Button(mainMenuTab, text='Customers',
                                     command=lambda: self.customerList)#add 'command =' parameter
         supplierBtn = tkinter.Button(mainMenuTab, text='Supplier',
-                                    command=lambda: elf.supplierList)#add 'command =' parameter
+                                    command=lambda: self.supplierList(mainMenuTab))#add 'command =' parameter
         stockBtn = tkinter.Button(mainMenuTab, text='Stock', command=lambda: self.checkStock)#add 'command =' parameter
         registerBtn.pack()
         customerBtn.pack()
         supplierBtn.pack()
         stockBtn.pack()
         return (mainMenuTab)
+
+    def supplierList(self, mainForm):
+        suppForm = SupplierForm().mainSupForm(mainForm)
+        suppForm.grab_set()
 
 '''    def cashResgister(self,):
         top = tkinter.Tk()
@@ -38,9 +42,6 @@ class UserMenu():
         top = tkinter.Tk()
         top.title('Regesiterd Customers')
 
-    def supplierList(self,):
-        top = tkinter.Tk()
-        top.title('Regesiterd Suppliers')
 
     def checkStock(self,):
         top = tkinter.Tk()
@@ -49,5 +50,5 @@ class UserMenu():
 
 
 if __name__ == '__main__':
-    helloScreen = User()
+    helloScreen = UserMenu()
     helloScreen.mainForm()

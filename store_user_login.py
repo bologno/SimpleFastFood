@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import tkinter
-from store_user_mainmenu import StoreLoginClass
+from store_user_register import StoreRegClass
 
 class StoreLogin():
 
@@ -17,15 +17,16 @@ class StoreLogin():
         top.title('Nice to have you working at Pollos Hnos')
         registerBtn = tkinter.Button(top, text='Register',
                                      command=lambda: self.callLogin(top))
-        #logInBtn = tkinter.Button(top, text='Login',
+        logInBtn = tkinter.Button(top, text='Login')
         #                          command=lambda: self.callLogin(top))
 
         registerBtn.pack()
+        logInBtn.pack()
         # Code to add widgets will go here...
         top.mainloop()
 
     def callLogin(self, mainForm):
-        logInForm = StoreLoginClass().showLogin(mainForm)
+        logInForm = StoreRegClass().showLogin(mainForm)
         logInForm.grab_set()
 
 '''    def callLogin(self, mainForm):
