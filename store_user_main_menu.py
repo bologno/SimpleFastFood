@@ -1,58 +1,52 @@
+#!/usr/bin/python
+
 import tkinter
-from user_main_menu import UserMenu
+from store_user_register import StoreRegClass
 
+class StoreUserMenu():
 
-class StoreLoginClass():
     '''
-    This class models the Register and LOgin for store system users.
+    This class models the Register/Log in menu of the store.
     '''
+
     def __init__(self):
         pass
-    #    self.name = ''
-    #    self.lastName = ''
-    #    self.phone = ''
-    #    self.address = ''
 
+    def setUserForm(self):
+        top = tkinter.Tk()
+        top.title('Nice to have you working at Pollos Hnos')
+        registerBtn = tkinter.Button(top, text='Register',
+                                     command=lambda: self.callLogin(top))
+        logInBtn = tkinter.Button(top, text='Login')
+        #                          command=lambda: self.callLogin(top))
 
-
-    def showLogin(self, mainForm):
-        loginTab = tkinter.Toplevel(mainForm)
-        loginTab.after(1, lambda: loginTab.focus_force())
-        loginTab.title('Provide user info')
-        userEntry = tkinter.Entry(loginTab)  # add 'command
-        userLabel = tkinter.Label(loginTab, text='Enter user')
-        pswdEntry = tkinter.Entry(loginTab)  # add '
-        pswdLabel = tkinter.Label(loginTab, text='Enter password')
-        pswd2Entry = tkinter.Entry(loginTab)  # add 'comman
-        pswd2Label = tkinter.Label(loginTab, text='Repeat password')
-        emailEntry = tkinter.Entry(loginTab)
-        emailLabel = tkinter.Label(loginTab, text='Enter email ')
-        saveBttn  = tkinter.Button(loginTab, text='Save ')
-        forgotBttn = tkinter.Button(loginTab, text='Forget pswd ')
-        # lambda function here allows to blend as parameter
-        # the function called on the button with his own
-        # arguemnt. Otherwise doesnt work on tkinter.
-        registerBtn = tkinter.Button(loginTab, text='Save ',
-                                     command=lambda: self.getProfile(loginTab))
-        #aself.name  = tkinter.Entry(registerTab, text = 'Name')#add 'command
-
-            #        custLogic.setCusDb
-        userEntry.pack()
-        userLabel.pack()
-        pswdEntry.pack()
-        pswdLabel.pack()
-        pswd2Entry.pack()
-        pswd2Label.pack()
-        emailEntry.pack()
-        emailLabel.pack()
-        forgotBttn.pack()
         registerBtn.pack()
+        logInBtn.pack()
+        # Code to add widgets will go here...
+        top.mainloop()
 
-        return (loginTab)
+    def callLogin(self, mainForm):
+        logInForm = StoreRegClass().showLogin(mainForm)
+        logInForm.grab_set()
+
+'''    def callLogin(self, mainForm):
+        loginForm = LogInClass().checkUser(mainForm)
+        loginForm.grab_set()
+
+    def callMenu(self, mainForm):
+        menuForm = CustomerMenu().showMenu(mainForm)
+        menuForm.grab_set()
+
+    def callPromo(self, mainForm):
+        promoForm = Promotion().showPromo(mainForm)
+        promoForm.grab_set()
 
 
-    def getProfile(self, topLevel):
-        #This method checks new user information and callSup
-        #User main menu
-        mainMenuForm = UserMenu().mainForm(topLevel)
-        mainMenuForm.grab_set()
+    def callSup(self, mainForm):
+        suppForm = Support().showHelp(mainForm)
+        suppForm.grab_set()'''
+
+
+if __name__ == '__main__':
+    helloScreen = StoreLogin()
+    helloScreen.setUserForm()
