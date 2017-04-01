@@ -2,6 +2,8 @@
 
 import tkinter
 from store_user_register import StoreRegClass
+from store_user_login import StoreLogin
+
 
 class StoreUserMenu():
 
@@ -12,12 +14,13 @@ class StoreUserMenu():
     def __init__(self):
         pass
 
-    def setUserForm(self):
+    def setStoreMenu(self):
         top = tkinter.Tk()
         top.title('Nice to have you working at Pollos Hnos')
+        logInBtn = tkinter.Button(top, text='Login',
+                                 command=lambda: self.callLogin(top))
         registerBtn = tkinter.Button(top, text='Register',
-                                     command=lambda: self.callLogin(top))
-        logInBtn = tkinter.Button(top, text='Login')
+                                    command=lambda: self.callRegister(top))
         #                          command=lambda: self.callLogin(top))
 
         registerBtn.pack()
@@ -26,7 +29,11 @@ class StoreUserMenu():
         top.mainloop()
 
     def callLogin(self, mainForm):
-        logInForm = StoreRegClass().showLogin(mainForm)
+        logInForm = StoreLogin().loginForm(mainForm)
+        logInForm.grab_set()
+
+    def callRegister(self, mainForm):
+        logInForm = StoreRegClass().showRegister(mainForm)
         logInForm.grab_set()
 
 '''    def callLogin(self, mainForm):
@@ -48,5 +55,5 @@ class StoreUserMenu():
 
 
 if __name__ == '__main__':
-    helloScreen = StoreLogin()
-    helloScreen.setUserForm()
+    helloScreen = StoreUserMenu()
+    helloScreen.setStoreMenu()

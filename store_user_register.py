@@ -15,7 +15,7 @@ class StoreRegClass():
 
 
 
-    def showLogin(self, mainForm):
+    def showRegister(self, mainForm):
         loginTab = tkinter.Toplevel(mainForm)
         loginTab.after(1, lambda: loginTab.focus_force())
         loginTab.title('Provide user info')
