@@ -1,59 +1,54 @@
-#!/usr/bin/python
-
 import tkinter
-from store_user_register import StoreRegClass
-from store_user_login import StoreLogin
+from supplier_main_form import SupplierForm
 
-
-class StoreUserMenu():
+class UserMenu():
 
     '''
-    This class models the Register/Log in menu of the store.
+    This class models the mainMenu of the store app user.
+    provides functionality to manually check register and kitchen
+    hitorical movement. Also for customer and supplier information
+    updates.
     '''
 
     def __init__(self):
         pass
 
-    def setStoreMenu(self):
-        top = tkinter.Tk()
-        top.title('Nice to have you working at Pollos Hnos')
-        logInBtn = tkinter.Button(top, text='Login',
-                                 command=lambda: self.callLogin(top))
-        registerBtn = tkinter.Button(top, text='Register',
-                                    command=lambda: self.callRegister(top))
-        #                          command=lambda: self.callLogin(top))
-
+    def getStoreUser(self, topForm):
+        mainMenuTab = tkinter.Toplevel(topForm)
+        mainMenuTab.after(2, lambda: mainMenuTab.focus_force())
+        mainMenuTab.title('User Main Menu')
+        registerBtn = tkinter.Button(mainMenuTab, text='Cash Reg',
+                                    command=lambda: self.cashResgister)
+        customerBtn = tkinter.Button(mainMenuTab, text='Customers',
+                                    command=lambda: self.customerList)#add 'command =' parameter
+        supplierBtn = tkinter.Button(mainMenuTab, text='Supplier',
+                                    command=lambda: self.supplierList(mainMenuTab))#add 'command =' parameter
+        stockBtn = tkinter.Button(mainMenuTab, text='Stock', command=lambda: self.checkStock)#add 'command =' parameter
         registerBtn.pack()
-        logInBtn.pack()
-        # Code to add widgets will go here...
-        top.mainloop()
+        customerBtn.pack()
+        supplierBtn.pack()
+        stockBtn.pack()
+        return (mainMenuTab)
 
-    def callLogin(self, mainForm):
-        logInForm = StoreLogin().loginForm(mainForm)
-        logInForm.grab_set()
+    def supplierList(self, mainForm):
+        suppForm = SupplierForm().mainSupForm(mainForm)
+        suppForm.grab_set()
 
-    def callRegister(self, mainForm):
-        logInForm = StoreRegClass().showRegister(mainForm)
-        logInForm.grab_set()
+'''    def cashResgister(self,):
+        top = tkinter.Tk()
+        top.title('Cash Register')
 
-'''    def callLogin(self, mainForm):
-        loginForm = LogInClass().checkUser(mainForm)
-        loginForm.grab_set()
-
-    def callMenu(self, mainForm):
-        menuForm = CustomerMenu().showMenu(mainForm)
-        menuForm.grab_set()
-
-    def callPromo(self, mainForm):
-        promoForm = Promotion().showPromo(mainForm)
-        promoForm.grab_set()
+    def customerList(self,):
+        top = tkinter.Tk()
+        top.title('Regesiterd Customers')
 
 
-    def callSup(self, mainForm):
-        suppForm = Support().showHelp(mainForm)
-        suppForm.grab_set()'''
+    def checkStock(self,):
+        top = tkinter.Tk()
+        top.title('Kitchen Stock')
+'''
 
 
 if __name__ == '__main__':
-    helloScreen = StoreUserMenu()
-    helloScreen.setStoreMenu()
+    helloScreen = UserMenu()
+    helloScreen.mainForm()

@@ -1,5 +1,6 @@
 import tkinter
-from user_main_menu import UserMenu
+from store_user_login import StoreLogin
+from tkinter import messagebox
 
 
 class StoreRegClass():
@@ -27,12 +28,9 @@ class StoreRegClass():
         pswd2Label = tkinter.Label(loginTab, text='Repeat password')
         emailEntry = tkinter.Entry(loginTab)
         emailLabel = tkinter.Label(loginTab, text='Enter email ')
-        forgotBttn = tkinter.Button(loginTab, text='Forget pswd ')
-        # lambda function here allows to blend as parameter
-        # the function called on the button with his own
-        # arguemnt. Otherwise doesnt work on tkinter.
+
         registerBtn = tkinter.Button(loginTab, text='Save ',
-                                     command=lambda: self.getProfile(loginTab))
+                                     command=lambda: self.getProfile(loginTab, mainForm))
         #aself.name  = tkinter.Entry(registerTab, text = 'Name')#add 'command
 
             #        custLogic.setCusDb
@@ -44,14 +42,17 @@ class StoreRegClass():
         pswd2Label.pack()
         emailEntry.pack()
         emailLabel.pack()
-        forgotBttn.pack()
         registerBtn.pack()
 
         return (loginTab)
 
 
-    def getProfile(self, topLevel):
-        #This method checks new user information and callSup
-        #User main menu
-        mainMenuForm = UserMenu().mainForm(topLevel)
+    def getProfile(self, loginTab, mainForm):
+        # This method should validate for security and then.
+        # add store user name and password.
+        # into store user Database. And then open login menu.
+        messagebox.showinfo('Registered', 'Check email')
+        loginTab.destroy()
+
+        mainMenuForm = StoreLogin().loginForm(mainForm)
         mainMenuForm.grab_set()
