@@ -29,8 +29,8 @@ class SqliteBase():
             self.parms = parms
             self.types = types
         else:
-            self.parms = ['Name', 'LastName', 'Phone', 'Address', 'USER', 'PASSWORD']
-            self.types = ['TEXT', 'TEXT', 'INTEGER', 'TEXT', 'TEXT', 'TEXT']
+            self.parms = ['Name', 'LastName', 'User', 'Password', 'Email']
+            self.types = ['TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT']
         self.values = settings[2]
         pass
     #DB to hold
@@ -76,8 +76,8 @@ class SqliteBase():
         #values = ", ".join(self.values)
         val = self.values
 #        numParm = len(val) *
-        sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?, ?, ?)"
-        c.execute(sql, (val[0], val[1], val[2], val[3], val[4], val[5]))
+        sql = 'INSERT INTO '+self.table+" VALUES (?, ?, ?, ?, ?)"
+        c.execute(sql, (val[0], val[1], val[2], val[3], val[4]))
         # Save (commit) the changes
         conn.commit()
         conn.close()
