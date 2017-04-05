@@ -1,18 +1,32 @@
-class Product(Object):
+from super_simple_db import SqliteBase
+
+class Product():
     '''
-    This class models a particular raw product used on company's menu
+    this class maps products from store. Relevant information as
+    name, brand, remaining quantity and minimum required(threshold).
     '''
 
-    def __init__(self, olderId = 0, nameProd, stockProd, descr,\
-     retailPrice):#Method starts all class variables
-        self.prodId = olderId + 1
-        self.nameProd = nameProd
-        self.stockProd = stockProd
-        self.descr = descr
-        self.retailPrice = retailPrice
+    def __init__(self, parms):
+        #self.values = ['super_simple_db', 'customer', parms]
+        #self.values = ['super_simple_db', 'user', parms]
+        self.values = ['super_simple_db', 'product', parms]
+        self.id = parms[0]
+        self.name = parms[1]
+        self.brand = parms[2]
+        self.qty = parms[3]
+        self.threshold = parms[4]
 
-    def actualziarSock(self, soldSize = None, boughtSize = None):
-        if ingreso:#Method updates stock on sales and supplier drops.
-            self.stock += boughtSize
-        if egreso:
-            self.stock -= soldSize
+    def setProductDb(self):#This method sends information for first time
+        dbInter = SqliteBase(self.values)
+        dbInter.fillTable()
+
+    def updateCutInfo(self, name = None, brand = None, qty = None):
+        #updatin useromer contact info is a relevant method fo functionality
+        dbUser = open('product.myd', 'w+')
+        if name:
+            self.name = name
+        if brand:
+            self.brand = brand
+        if qty:
+            self.qty = qty
+        dbUser.close()

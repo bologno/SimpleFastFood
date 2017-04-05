@@ -20,7 +20,7 @@ class User():
 
     def updateCutInfo(self, tel = None, address = None, clubPts = None):
         #updatin useromer contact info is a relevant method fo functionality
-        dbUser = open('clientesDB.myd', 'w+')
+        dbUser = open('user.myd', 'w+')
         if tel:
             self.tel = tel
         if address:
